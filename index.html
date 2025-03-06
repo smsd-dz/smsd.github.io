@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMSD - Student Society for Advanced Modeling, Simulation & Data Science</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+
+	<style>
+		:root {
+			--primary-black: #1A1A1A;
+			--secondary-black: #333333;
+			--accent-gold: #F1C40F;
+			--light-gray: #ECF0F1;
+			--dark-gray: #7F8C8D;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Inter', sans-serif;
+		}
+
+		body {
+			line-height: 1.6;
+			color: var(--primary-black);
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		.header {
+			background: var(--primary-black);
+			color: white;
+			padding: 1rem;
+			position: fixed;
+			width: 100%;
+			top: 0;
+			z-index: 1000;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.nav {
+			max-width: 1200px;
+			margin: 0 auto;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.nav-links {
+			display: flex;
+			gap: 2rem;
+		}
+
+		.nav-links a {
+			color: white;
+			text-decoration: none;
+			transition: color 0.3s;
+		}
+
+		.nav-links a:hover {
+			color: var(--accent-gold);
+		}
+
+		.menu-icon {
+			display: none;
+			font-size: 1.5rem;
+			cursor: pointer;
+		}
+
+		.hero {
+			background: linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.85)), 
+						url('https://cdnjs.cloudflare.com/ajax/libs/placeholder-image/1.1.0/hero-background.jpg');
+			background-size: cover;
+			background-position: center;
+			color: white;
+			padding: 8rem 2rem 4rem;
+			text-align: center;
+			position: relative;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			overflow: hidden; /* Prevent image from extending beyond hero */
+
+		}
+
+		.hero-container {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+			height: 100%;
+		}
+
+		.hero-text {
+			flex: 1;
+			max-width: 50%;
+			text-align: left;
+			padding: 2rem;
+		}
+
+		.hero-text h1 {
+			font-size: 2.5rem;
+			margin-bottom: 1.5rem;
+			text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+			color: white;
+		}
+
+		.hero-text p {
+			font-size: 1.3rem;
+			margin-bottom: 2rem;
+			text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+			color: var(--light-gray);
+		}
+
+		.hero-button {
+			display: inline-block;
+			background: linear-gradient(45deg, var(--accent-gold), #ffd700); /* Gold gradient */
+			color: var(--primary-black);
+			font-weight: 600;
+			padding: 0.8rem 2rem;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: transform 0.3s, background 0.3s;
+			text-decoration: none;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		}
+
+		.hero-button:hover {
+			background: linear-gradient(45deg, #e6b800, #ffcc00); /* Darker gold gradient on hover */
+			transform: scale(1.05);
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+		}
+
+		.section {
+			padding: 4rem 2rem;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding-top: 80px;
+			margin-top: -80px;
+		}
+
+		.section h2 {
+			color: var(--secondary-black);
+			margin-bottom: 2rem;
+			border-bottom: 3px solid var(--accent-gold);
+			padding-bottom: 0.5rem;
+			display: inline-block;
+		}
+
+		.card {
+			background: white;
+			padding: 1.5rem;
+			border-radius: 8px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			margin-bottom: 1.5rem;
+			transition: transform 0.3s, box-shadow 0.3s;
+		}
+
+		.card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+		}
+
+		.card h3 {
+			color: var(--primary-black);
+			margin-bottom: 1rem;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.card h3 i {
+			color: var(--accent-gold);
+		}
+
+		.cta-button {
+			background: var(--secondary-black);
+			color: white;
+			padding: 1rem 2rem;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background 0.3s, transform 0.3s;
+			font-size: 1rem;
+		}
+
+		.cta-button:hover {
+			background: var(--primary-black);
+			transform: scale(1.05);
+		}
+
+		.button-spacer {
+			margin-top: 1.5rem;
+			display: block;
+		}
+
+		.footer {
+			background: var(--primary-black);
+			color: white;
+			padding: 2rem;
+			margin-top: 4rem;
+		}
+
+		.footer-content {
+			max-width: 1200px;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 2rem;
+		}
+
+		.footer-section h4 {
+			margin-bottom: 1rem;
+			color: var(--accent-gold);
+		}
+
+		.footer-section p {
+			margin-bottom: 0.5rem;
+		}
+
+		.footer-section a {
+			color: white;
+			text-decoration: none;
+			transition: color 0.3s;
+		}
+
+		.footer-section a:hover {
+			color: var(--accent-gold);
+		}
+
+		.social-links {
+			display: flex;
+			gap: 1rem;
+		}
+
+		.social-links a {
+			color: white;
+			font-size: 1.5rem;
+			transition: color 0.3s;
+		}
+
+		.social-links a:hover {
+			color: var(--accent-gold);
+		}
+
+		.newsletter-form {
+			display: flex;
+			gap: 0.5rem;
+		}
+
+		.newsletter-form input {
+			padding: 0.5rem;
+			border: none;
+			border-radius: 5px;
+			flex: 1;
+		}
+
+		.newsletter-form button {
+			background: var(--accent-gold);
+			color: var(--primary-black);
+			padding: 0.5rem 1rem;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background 0.3s;
+		}
+
+		.newsletter-form button:hover {
+			background: white;
+		}
+
+		.slideshow-wrapper {
+			position: relative;
+			max-width: 1200px;
+			margin: 0 auto;
+			overflow: visible;
+		}
+
+		.slideshow-container {
+			position: relative;
+			overflow: hidden;
+		}
+
+		.slides-wrapper {
+			display: flex;
+			transition: transform 0.5s ease-in-out;
+			width: 100%;
+		}
+
+		.slide {
+			min-width: 100%;
+			box-sizing: border-box;
+			padding: 10px;
+		}
+
+		.slide .card {
+			border: 2px solid var(--light-gray);
+			border-radius: 10px;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+			height: 380px;
+			overflow-y: auto;
+		}
+
+		.slide .card:hover {
+			border-color: var(--accent-gold);
+		}
+		
+		.prev, .next {
+			z-index: 999; /* Arrows stay below the header */
+		}
+
+
+		/* Hide arrows when they are under the header */
+		.prev, .next {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 60px;
+			height: 60px;
+			background-color: rgba(255, 255, 255, 0.9);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 28px;
+			font-weight: bold;
+			color: var(--primary-black);
+			transition: background 0.3s, color 0.3s;
+		}
+
+		.prev { left: -80px; }
+		.next { right: -80px; }
+
+		.prev:hover, .next:hover {
+			background-color: var(--accent-gold);
+			color: white;
+		}
+
+		.dots-container {
+			text-align: center;
+			margin: 20px 0;
+		}
+
+		.dot {
+			cursor: pointer;
+			height: 12px;
+			width: 12px;
+			margin: 0 5px;
+			background-color: var(--light-gray);
+			border-radius: 50%;
+			display: inline-block;
+			transition: background-color 0.3s ease;
+		}
+
+		.dot.active, .dot:hover {
+			background-color: var(--accent-gold);
+		}
+
+		details.card {
+			margin-bottom: 1.5rem;
+			overflow: hidden;
+		}
+
+		details.card summary {
+			padding: 1.5rem;
+			background: white;
+			cursor: pointer;
+			outline: none;
+			transition: background 0.3s;
+			list-style: none;
+		}
+
+		details.card summary:hover {
+			background: var(--light-gray);
+		}
+
+		details.card summary h3 {
+			margin: 0;
+		}
+
+		details.card summary::-webkit-details-marker,
+		details.card summary::marker,
+		details.card summary::-moz-list-bullet {
+			display: none;
+		}
+
+		details.card .card-content {
+			padding: 1.5rem;
+			background: white;
+			border-top: 1px solid var(--light-gray);
+		}
+
+		details.card ul {
+			list-style-position: outside;
+			margin-left: 1.5rem;
+		}
+
+		details.card ul li {
+			margin-bottom: 0.5rem;
+		}
+
+		details.card ul ul {
+			margin-left: 1.5rem;
+			margin-top: 0.5rem;
+		}
+
+		details.card[open] {
+			transform: translateY(-5px);
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+		}
+
+		.paragraph-spacing {
+			margin-bottom: 2em;
+		}
+
+		@media (max-width: 768px) {
+			.nav-links {
+				display: none;
+				flex-direction: column;
+				gap: 1rem;
+				position: absolute;
+				top: 60px;
+				left: 0;
+				width: 100%;
+				background: var(--primary-black);
+				padding: 1rem;
+			}
+
+			.nav-links.active {
+				display: flex;
+			}
+
+			.menu-icon {
+				display: block;
+			}
+
+			.hero {
+				padding: 6rem 1rem 2rem;
+				flex-direction: column;
+				text-align: center;
+			}
+
+			.hero-container {
+				flex-direction: column;
+			}
+
+			.hero-text, .hero-image {
+				max-width: 100%;
+				text-align: center;
+			}
+
+			.section {
+				padding: 2rem 1rem;
+			}
+
+			.slide .card {
+				height: 450px;
+			}
+
+			.prev, .next {
+				width: 40px;
+				height: 40px;
+				font-size: 20px;
+			}
+		
+		}
+		/* Hide arrows when they overlap with the header */
+		@media (max-width: 768px) {
+			.prev, .next {
+				display: none; /* Hide arrows on smaller screens */
+			}
+		}
+		.hero-image {
+		  position: absolute;
+		  bottom: 0;
+		  right: 0;
+		  transform-origin: bottom right; /* Anchor scaling to the bottom right corner */
+		  transform: scale(0.6);         /* Adjust scale as needed */
+		  margin-right: -27px;  /* Negative margin shifts the image to the right, adjust value as needed */
+		}
+
+		.hero-image img {
+		  display: block;
+		  width: auto;    /* Use natural width */
+		  height: auto;   /* Use natural height */
+		}
+
+		@media (max-width: 768px) {
+			.hero-image {
+				position: relative;
+				transform: scale(0.5);
+				margin-right: 0;
+				margin-top: 2rem;
+			}
+		}
+		/* Slideshow Wrapper Styles */
+		.slideshow-wrapper {
+			position: relative;
+			max-width: 1200px;
+			margin: 0 auto;
+			/* Allow arrows to extend outside */
+			overflow: visible;
+		}
+
+		/* The container that clips the slides */
+		.slideshow-container {
+			position: relative;
+			overflow: hidden;
+		}
+
+		/* Slides wrapper & slides styling */
+		.slides-wrapper {
+			display: flex;
+			transition: transform 0.5s ease-in-out;
+			width: 100%;
+		}
+
+		.slide {
+			min-width: 100%;
+			box-sizing: border-box;
+			padding: 10px;
+		}
+
+		/* Navigation Arrows – positioned absolutely relative to .slideshow-wrapper */
+		.prev, .next {
+			cursor: pointer;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 60px;
+			height: 60px;
+			background-color: rgba(255, 255, 255, 0.9);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 28px;
+			font-weight: bold;
+			color: var(--primary-black);
+			z-index: 1000;
+			transition: background 0.3s, color 0.3s;
+		}
+
+		/* Place arrows outside the slide container */
+		.prev { left: -80px; }
+		.next { right: -80px; }
+
+		.prev:hover, .next:hover {
+			background-color: var(--accent-gold);
+			color: white;
+		}
+
+		/* Slide card styles */
+		.slide .card {
+			background: white;
+			border: 2px solid var(--light-gray);
+			border-radius: 10px;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+			padding: 1.5rem;
+			transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+			height: 380px;
+			overflow-y: auto;
+		}
+
+		.slide .card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+			border-color: var(--secondary-blue);
+		}
+
+		/* Dots Navigation */
+		.dots-container {
+			text-align: center;
+			margin: 20px 0;
+		}
+
+		.dot {
+			cursor: pointer;
+			height: 12px;
+			width: 12px;
+			margin: 0 5px;
+			background-color: var(--light-gray);
+			border-radius: 50%;
+			display: inline-block;
+			transition: background-color 0.3s ease;
+		}
+
+		.dot.active, .dot:hover {
+			background-color: var(--accent-gold);
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.prev, .next {
+				width: 40px;
+				height: 40px;
+				margin-top: -20px;
+				font-size: 20px;
+			}
+			
+			.slide .card {
+				height: 450px;
+				overflow-y: auto;
+			}
+		}
+
+		/* Specific typography and layout for objectives section */
+		#objectives .card h3 {
+			font-size: 1.8rem;      /* Bigger headings for each card */
+			margin-bottom: 1rem;
+		}
+
+		#objectives p,
+		#objectives ul,
+		#objectives li {
+			font-size: 1.1rem;      /* Slightly larger font size */
+			line-height: 1.6;       /* Better line spacing for readability */
+		}
+
+		#objectives .card {
+			padding: 1.8rem;
+		}
+
+		#objectives ul li:not(:last-child) {
+			margin-bottom: 1em; /* Adjust spacing as needed */
+		}
+		
+		
+		.hero-logos {
+			display: flex;
+			justify-content: flex-start; /* Align logos to the left */
+			gap: 20px; /* Adjust spacing between logos */
+			margin-top: 20px; /* Space between the button and logos */
+			margin-bottom: 40px; /* Add padding below the logos */
+
+		}
+
+		.hero-logos img {
+			width: auto; /* Let logos use their natural width */
+			height: 120px; /* Set a fixed height (adjust as needed) */
+			transition: transform 0.3s ease;
+		}
+
+		.hero-logos img:hover {
+			transform: scale(1.1); /* Slight hover effect */
+		}
+	</style>
+
+
+
+
+
+
+
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <h1>SMSD</h1>
+            <div class="nav-links" id="navLinks">
+                <a href="#about">About</a>
+                <a href="#objectives">Objectives</a>
+                <a href="#research">Research</a>
+                <a href="#membership">Membership</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+	<div class="hero">
+		<div class="hero-container">
+			<div class="hero-text">
+				<div class="hero-logos">
+					<img src="images/logo1.png" alt="Logo 1">
+				</div>
+				<h1>Student Society for Advanced Modeling, Simulation & Data Science</h1>
+				<p>Algerian Students Powering Technological Sovereignty Through Industry 4.0 Innovation</p>
+				<a href="#about" class="hero-button">Learn More</a>
+			</div>
+			<div class="hero-image">
+				<img src="images/blocb.png" alt="blocb">
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="spacer" 
+     style="height: 80px;" 
+     aria-hidden="true"
+     role="presentation">
+	</div>
+
+	<section id="about" class="section">
+    <h2>About SMSD</h2>
+    <p>
+        The <strong>Society for Advanced Modeling, Simulation & Data Science in Engineering and Industry 4.0 (SMSD)</strong> is a pioneering student-led initiative at the <strong>University M’Hamed Bougara of Boumerdes</strong>, hosted within its <strong>Faculty of Hydrocarbons and Chemistry</strong>—a nationally recognized hub for <strong>energy and chemical sciences education</strong>. SMSD unites driven students, faculty mentors, and industry experts to tackle pressing challenges at the intersection of <strong>engineering innovation</strong>, <strong>sustainable development</strong>, and <strong>advanced digital technologies</strong>.
+    </p>
+</section>
+
+	<section id="mission-vision" class="section">
+    <h2>Mission and Vision</h2>
+    
+    <p class="paragraph-spacing">
+        Central to SMSD’s mission is the advancement of <strong>technological sovereignty</strong>—the development of <strong>homegrown expertise</strong> and <strong>locally engineered solutions</strong> that reduce reliance on foreign technologies.
+    </p>
+
+    <p class="paragraph-spacing">
+        By integrating <strong>advanced numerical techniques and Industry 4.0 tools</strong> such as <strong>Industrial IoT (IIoT)</strong>, <strong>artificial intelligence (AI)</strong>, <strong>machine learning</strong>, <strong>digital twins</strong>, and <strong>big data analytics</strong>, SMSD empowers Algerian engineers and scientists to design, optimize, and secure <strong>critical infrastructure</strong> and <strong>industrial systems</strong>. This focus on sovereignty ensures that Algeria’s <strong>energy transition</strong>, <strong>industrial modernization</strong>, and <strong>sustainable development</strong> are driven by <strong>tailored innovations</strong> rooted in local challenges and resources.
+    </p>
+
+    <p class="paragraph-spacing">
+        Bridging <strong>academic and research rigor</strong> with <strong>industrial needs</strong>, SMSD fosters a new generation of problem-solvers equipped to deliver <strong>autonomous</strong>, <strong>resilient</strong>, and <strong>globally competitive technological solutions</strong>.
+    </p>
+
+    <p>
+        Collaborating closely with partners like <strong>Sonatrach</strong> and <strong>energy startups</strong>, SMSD members apply these <strong>Industry 4.0 innovations</strong> to real-world challenges, ensuring <strong>Algeria’s industries</strong> remain competitive in a rapidly evolving digital global landscape.
+    </p>
+</section>
+
+	<section id="objectives" class="section">
+		<h2>Team's Objectives</h2>
+		
+		<div class="slideshow-wrapper">	
+			<div class="slideshow-container">
+			
+				<div class="slides-wrapper">
+					<!-- Slide 1 -->
+					<div class="slide">
+						<div class="card">
+							<h3><i class="fas fa-bullseye"></i> Advance Modeling, Simulation, and Data Science</h3>
+							<ul class="enhanced-list">
+								<li>Develop and apply cutting-edge modeling and simulation techniques to solve complex real-world problems.</li>
+								<li>Leverage data science and computational tools to analyze and predict system behaviors across various domains, including energy, education, healthcare, and environmental sustainability.</li>
+								<li>Promote interdisciplinary research that bridges mathematics, engineering, and computational sciences.</li>
+							</ul>
+						</div>
+					</div>
+					
+					<!-- Slide 2 -->
+					<div class="slide">
+						<div class="card">
+							<h3><i class="fas fa-laptop-code"></i> Enhance Digital Literacy</h3>
+							<ul>
+								<li>Equip students and faculty with the skills needed to thrive in the digital economy through targeted training programs and workshops.</li>
+								<li>Foster proficiency in Industry 4.0 technologies, including machine learning, big data analytics, generative AI and digital twins.</li>
+								<li>Achieve 100% digital workflow adoption among members by 2026, ensuring seamless integration of digital tools into research and education.</li>
+							</ul>
+						</div>
+					</div>
+					
+					<!-- Slide 3 -->
+					<div class="slide">
+						<div class="card">
+							<h3><i class="fas fa-tasks"></i> Foster Agile Workflows</h3>
+							<ul>
+								<li>Implement agile methodologies to enhance research project management, ensuring iterative development and continuous improvement.</li>
+								<li>Encourage self-organizing, cross-functional teams that adapt to changing project requirements and stakeholder feedback.</li>
+								<li>Conduct regular retrospectives to evaluate team effectiveness and refine processes.</li>
+							</ul>
+						</div>
+					</div>
+					
+					<!-- Slide 4 -->
+					<div class="slide">
+						<div class="card">
+							<h3><i class="fas fa-handshake"></i> Bridge Academia and Industry</h3>
+							<ul>
+								<li>Collaborate with industry partners to address real-world challenges through applied research and innovation.</li>
+								<li>Develop industry-aligned curricula that prepare students for careers in digital engineering and data science.</li>
+								<li>Provide students with hands-on experience through projects derived from industrial challenges and supported by industry partners.</li>
+							</ul>
+						</div>
+					</div>
+					
+					<!-- Slide 5 -->
+					<div class="slide">
+						<div class="card">
+							<h3><i class="fas fa-flask"></i> Promote Research Excellence</h3>
+							<ul>
+								<li>Support high-quality research in key domains such as renewable energy, hydrocarbons, biotechnology, and Industry 4.0 technologies.</li>
+								<li>Facilitate the dissemination of research findings through conferences, webinars, and publications.</li>
+								<li>Recognize and reward innovation through competitions such as the Best Student Software Competition and the Young Researcher Award.</li>
+							</ul>
+						</div>
+					</div>
+					
+					<!-- Slide 6 -->
+					<div class="slide">
+						<div class="card">
+							<h3><i class="fas fa-flag"></i> Support National Priorities</h3>
+							<ul>
+								<li>Align research activities with national goals, including energy security, food security, and citizen health.</li>
+								<li>Contribute to the development of smart grids, renewable energy systems, and sustainable technologies.</li>
+								<li>Address critical challenges in educational and healthcare institutions through digital solutions and automated big data pipelines and biotechnology research.</li>
+							</ul>
+						</div>
+					</div>
+					
+					<!-- Slide 7 -->
+					<div class="slide">
+						<div class="card">
+							<h3><i class="fas fa-users"></i> Build a Collaborative Community</h3>
+							<ul>
+								<li>Create a vibrant community of university advisors, students, and industry professionals dedicated to advancing modeling, simulation, and data science.</li>
+								<li>Facilitate networking opportunities through events, mentoring programs, and collaborative projects.</li>
+								<li>Promote professional integrity and ethics in all research and educational activities.</li>
+							</ul>
+						</div>
+					</div>
+					
+					<!-- Slide 8 -->
+					<div class="slide">
+						<div class="card">
+							<h3><i class="fas fa-cogs"></i> Drive Digital Transformation</h3>
+							<ul>
+								<li>Develop and implement digital engineering solutions, including predictive analytics, data visualization, and augmented-reality-enabled digital twins.</li>
+								<li>Support businesses of all sizes in understanding and exploiting digital technologies through consultancy and training services.</li>
+								<li>Embrace technological advancements that enable modeling and simulation to deliver solutions benefiting the Algerian society.</li>
+							</ul>
+						</div>
+					</div>
+					
+					<!-- Slide 9 -->
+					<div class="slide">
+						<div class="card">
+							<h3><i class="fas fa-graduation-cap"></i> Empower Students and Faculty</h3>
+							<ul>
+								<li>Provide students with innovative software and development opportunities to gain the skills and knowledge needed for professional environments.</li>
+								<li>Certify faculty in cloud computing platforms and other digital tools to enhance teaching and research capabilities.</li>
+								<li>Offer resources for training and certification to promote excellence in research and industry.</li>
+							</ul>
+						</div>
+					</div>
+					
+					<!-- Slide 10 -->
+					<div class="slide">
+						<div class="card">
+							<h3><i class="fas fa-chart-line"></i> Ensure Continuous Improvement</h3>
+							<ul>
+								<li>Regularly evaluate and refine processes to ensure alignment with organizational goals and stakeholder needs.</li>
+								<li>Foster a culture of innovation, collaboration, and lifelong learning among members.</li>
+								<li>Adapt to emerging trends and technologies to maintain relevance in a rapidly evolving digital landscape.</li>
+							</ul>
+						</div>
+					</div>
+					
+					<!-- Slide 11 - Summary -->
+					<div class="slide">
+						<div class="card">
+							<h3><i class="fas fa-star"></i> Summary</h3>
+							<p>The SMSD team is committed to advancing modeling, simulation, and data science while fostering digital literacy and agile workflows. By bridging academia and industry, in alignment with national govermental research priorities and portfolio, and driving digital transformation, the team aims to create a lasting impact on society, the economy and the nation. Through collaboration, innovation, and continuous improvement, SMSD empowers its members to thrive in the digital economy and contribute meaningfully to research and industry.</p>
+						</div>
+					</div>
+					
+				</div>
+				<!-- Navigation Dots -->
+				<div class="dots-container">
+					<span class="dot active" onclick="currentSlide(1)"></span>
+					<span class="dot" onclick="currentSlide(2)"></span>
+					<span class="dot" onclick="currentSlide(3)"></span>
+					<span class="dot" onclick="currentSlide(4)"></span>
+					<span class="dot" onclick="currentSlide(5)"></span>
+					<span class="dot" onclick="currentSlide(6)"></span>
+					<span class="dot" onclick="currentSlide(7)"></span>
+					<span class="dot" onclick="currentSlide(8)"></span>
+					<span class="dot" onclick="currentSlide(9)"></span>
+					<span class="dot" onclick="currentSlide(10)"></span>
+					<span class="dot" onclick="currentSlide(11)"></span>
+				</div>
+				
+			</div>
+			    <!-- Navigation Arrows (siblings to slideshow-container) -->
+			<a class="prev">&#10094;</a>
+			<a class="next">&#10095;</a>
+		</div>
+	</section>
+
+
+	<section id="research" class="section research-domains">
+	
+    <h2>Areas of Interest and Research</h2>
+
+    <details class="card">
+        <summary>
+            <h3><i class="fas fa-mountain"></i> Geosciences, Reservoir Engineering & Enhanced Oil Recovery (EOR/IOR)</h3>
+        </summary>
+        <div class="card-content">
+            <ul>
+                <li><strong>Reservoir Characterization and Modeling</strong>
+                    <ul>
+                        <li>Geological and geophysical analysis of conventional and unconventional reservoirs</li>
+                        <li>Simulation of multiphase flows and reservoir evaluation methodologies</li>
+                    </ul>
+                </li>
+                <li><strong>Enhanced Oil Recovery (EOR) & Improved Oil Recovery (IOR)</strong>
+                    <ul>
+                        <li>Development of advanced EOR techniques to increase oil recovery rates</li>
+                        <li>Monitoring of reservoir stimulation using microseismic methods</li>
+                    </ul>
+                </li>
+                <li><strong>Flow Assurance, Corrosion & Asset Integrity</strong>
+                    <ul>
+                        <li>Corrosion monitoring and mitigation strategies for pipelines and collection networks</li>
+                        <li>Data migration tools and process optimization techniques for oil and gas production</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </details>
+	
+    <details class="card">
+        <summary>
+            <h3><i class="fas fa-cogs"></i> Industry 4.0 & Digital Transformation</h3>
+        </summary>
+        <div class="card-content">
+            <ul>
+                <li><strong>Automation, AI & IoT in Industrial Systems</strong>
+                    <ul>
+                        <li>Integration of artificial intelligence, robotics, and IoT for industrial efficiency</li>
+                        <li>Development of simulation-based optimization tools for process automation</li>
+                    </ul>
+                </li>
+                <li><strong>Smart Grids & Computational Tools</strong>
+                    <ul>
+                        <li>Creation of modeling software for energy infrastructure</li>
+                        <li>Deployment of predictive analytics for grid stability</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </details>
+	
+    <details class="card">
+        <summary>
+            <h3><i class="fas fa-university"></i> Educational Institution Automation & Digitalization</h3>
+        </summary>
+        <div class="card-content">
+            <ul>
+                <li><strong>Smart Learning Environments & Digital Classrooms</strong>
+                    <ul>
+                        <li>AI-driven personalized learning systems</li>
+                        <li>Interactive VR/AR learning technologies</li>
+                    </ul>
+                </li>
+                <li><strong>Data Pipelines & Academic Performance Analytics</strong>
+                    <ul>
+                        <li>Automated data platforms for student tracking</li>
+                        <li>Big data analysis for curriculum optimization</li>
+                    </ul>
+                </li>
+                <li><strong>Campus Digitalization & Smart Infrastructure</strong>
+                    <ul>
+                        <li>IoT integration for facility management</li>
+                        <li>Digital administrative platforms for resource allocation</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="card">
+        <summary>
+            <h3><i class="fas fa-flask"></i> Materials, Inspection & Flow Assurance</h3>
+        </summary>
+        <div class="card-content">
+            <ul>
+                <li><strong>Corrosion Monitoring and Control</strong>
+                    <ul>
+                        <li>Real-time tracking of material degradation and infrastructure stability</li>
+                        <li>Development of advanced anti-corrosion solutions and treatment techniques</li>
+                    </ul>
+                </li>
+                <li><strong>Inspection & Predictive Maintenance</strong>
+                    <ul>
+                        <li>Implementation of simulation and AI-based predictive maintenance models</li>
+                        <li>Development of real-time analysis tools for early detection of flow assurance issues</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="card">
+        <summary>
+            <h3><i class="fas fa-industry"></i> Refining & Petrochemicals</h3>
+        </summary>
+        <div class="card-content">
+            <ul>
+                <li><strong>Downstream Process Optimization</strong>
+                    <ul>
+                        <li>Modeling, simulation, and optimization of refining and petrochemical processes</li>
+                        <li>Enhancement of final product characteristics through digital and chemical innovation</li>
+                    </ul>
+                </li>
+                <li><strong>Operational Planning & Facility Management</strong>
+                    <ul>
+                        <li>Development of decision-support tools for process control and energy efficiency</li>
+                        <li>Implementation of integrated monitoring systems to improve refining operations</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="card">
+        <summary>
+            <h3><i class="fas fa-dna"></i> Biotechnology & Environmental Applications</h3>
+        </summary>
+        <div class="card-content">
+            <ul>
+                <li><strong>Biotechnology for Health & Environment</strong>
+                    <ul>
+                        <li>Molecular characterization and development of diagnostic tools</li>
+                        <li>Bioinformatics, immunology, cytogenetics, and medical informatics research</li>
+                    </ul>
+                </li>
+                <li><strong>Environmental Sustainability & Waste Management</strong>
+                    <ul>
+                        <li>Application of biotechnologies for pollution treatment and sustainable waste management</li>
+                        <li>Development of eco-friendly solutions for industrial and urban environments</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="card">
+        <summary>
+            <h3><i class="fas fa-leaf"></i> Sustainability: Renewable Energy, Hydrogen & Bioenergy</h3>
+        </summary>
+        <div class="card-content">
+            <ul>
+                <li><strong>Renewable Energy Integration & Smart Grids</strong>
+                    <ul>
+                        <li>Impact assessment and grid connection studies for renewable energy power plants</li>
+                        <li>Development of forecasting and real-time production management tools</li>
+                    </ul>
+                </li>
+                <li><strong>Renewable Resource Assessment & Optimization</strong>
+                    <ul>
+                        <li>Mapping and modeling of solar, wind, geothermal, and biomass energy potential</li>
+                        <li>Climate impact studies using satellite imagery</li>
+                    </ul>
+                </li>
+                <li><strong>Hydrogen & Fuel Cell Technologies</strong>
+                    <ul>
+                        <li>Research on hydrogen safety, regulations, and international standards</li>
+                        <li>Development of secure fuel cell technologies for energy storage and transport</li>
+                    </ul>
+                </li>
+                <li><strong>Renewable Energy Power Plant Operation & Maintenance</strong>
+                    <ul>
+                        <li>Real-time monitoring of power plant performance and predictive analytics</li>
+                        <li>Intelligent energy management strategies for large-scale renewable farms</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+
+
+    <details class="card">
+        <summary>
+            <h3><i class="fas fa-medkit"></i> Healthcare Digitalization & E-Health</h3>
+        </summary>
+        <div class="card-content">
+            <ul>
+                <li><strong>Telemedicine & Healthcare Platforms</strong>
+                    <ul>
+                        <li>Cloud-based telemedicine systems for remote regions</li>
+                        <li>Digital tools for patient monitoring and diagnostics</li>
+                    </ul>
+                </li>
+                <li><strong>Medical Simulation & Electronic Health Records</strong>
+                    <ul>
+                        <li>Design of EHR systems for data-driven healthcare</li>
+                        <li>Digital simulation of medical procedures</li>
+                    </ul>
+                </li>
+                <li><strong>Medical Robotics & Smart Health Systems</strong>
+                    <ul>
+                        <li>Integration of robotics in healthcare automation</li>
+                        <li>Cybersecurity standards for digital healthcare</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+
+
+    <details class="card">
+        <summary>
+            <h3><i class="fas fa-balance-scale"></i> Legislative and Strategic References</h3>
+        </summary>
+        <div class="card-content">
+            <ul>
+                <li><strong>Law No. 15-21 (December 30, 2015)</strong>
+                    <ul>
+                        <li>Governing scientific research and technological development</li>
+                    </ul>
+                </li>
+                <li><strong>Executive Decree No. 21-89 (March 1, 2021)</strong>
+                    <ul>
+                        <li>Multi-year development plan including:
+                            <ul>
+                                <li>National research programs on food security</li>
+                                <li>National research programs on public health</li>
+                                <li>National research programs on energy security</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </details>
+</section>
+
+
+
+
+
+	<section id="membership" class="section">
+    <h2>Membership</h2>
+    <p>SMSD is open to all who wish to join and contribute with competence. We empower members with relevant resources, network, expertise, data tools, advisory services, training, and industry informed projects.</p>
+	<a href="#membership" class="hero-button button-spacer" onclick="window.location.href='https://form.jotform.com/250645073136554';">Apply Now</a>
+
+</section>
+
+    <footer id="contact" class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: smsd@univ-boumerdes.dz</p>
+                <p>Phone: +213 (0) 781 50 53 95</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#about">About</a><br>
+                <a href="#objectives">Objectives</a><br>
+                <a href="#research">Research</a><br>
+                <a href="#membership">Membership</a><br>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Subscribe to Our Newsletter</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+
+
+	
+<script>
+	document.addEventListener("scroll", function () {
+		const header = document.querySelector(".header");
+		const prevArrow = document.querySelector(".prev");
+		const nextArrow = document.querySelector(".next");
+
+		const headerBottom = header.offsetTop + header.offsetHeight;
+		const prevArrowTop = prevArrow.offsetTop;
+		const nextArrowTop = nextArrow.offsetTop;
+
+		// Hide arrows if they overlap with the header
+		if (prevArrowTop < headerBottom) {
+			prevArrow.style.display = "none";
+		} else {
+			prevArrow.style.display = "flex";
+		}
+
+		if (nextArrowTop < headerBottom) {
+			nextArrow.style.display = "none";
+		} else {
+			nextArrow.style.display = "flex";
+		}
+	});
+
+	// Toggle the mobile menu
+	function toggleMenu() {
+		const navLinks = document.getElementById("navLinks");
+		navLinks.classList.toggle("active");
+	}
+
+	// Define slideIndex and functions in the global scope
+	let slideIndex = 1;
+
+	// Show the current slide
+	function showSlide(n) {
+		const slides = document.querySelectorAll(".slide");
+		const dots = document.querySelectorAll(".dot");
+		const slidesWrapper = document.querySelector(".slides-wrapper");
+		const container = document.querySelector(".slideshow-container");
+		const slideWidth = container.clientWidth; // Dynamically set slide width
+
+		if (n > slides.length) {
+			slideIndex = 1;
+		}
+		if (n < 1) {
+			slideIndex = slides.length;
+		}
+
+		// Move slides to the correct position
+		slidesWrapper.style.transform = `translateX(${-slideWidth * (slideIndex - 1)}px)`;
+
+		// Update active dot indicator
+		dots.forEach(dot => {
+			dot.classList.remove("active");
+		});
+		dots[slideIndex - 1].classList.add("active");
+	}
+
+	// Change slide by n increments (for arrows)
+	function changeSlide(n) {
+		showSlide(slideIndex += n);
+	}
+
+	// Jump to a specific slide (for dots)
+	function currentSlide(n) {
+		showSlide(slideIndex = n);
+	}
+
+	// Initialize everything when the DOM is loaded
+	document.addEventListener("DOMContentLoaded", function() {
+		// Smooth scrolling for anchor links
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener("click", function(e) {
+				e.preventDefault();
+				const target = document.querySelector(this.getAttribute("href"));
+				if (target) {
+					window.scrollTo({
+						top: target.offsetTop,
+						behavior: "smooth"
+					});
+				}
+			});
+		});
+
+		// Attach event listeners for navigation arrows
+		const prevButton = document.querySelector(".prev");
+		const nextButton = document.querySelector(".next");
+
+		if (prevButton && nextButton) {
+			prevButton.addEventListener("click", () => {
+				changeSlide(-1);
+			});
+			nextButton.addEventListener("click", () => {
+				changeSlide(1);
+			});
+		}
+
+		// Attach event listeners for dot navigation
+		document.querySelectorAll(".dot").forEach((dot, index) => {
+			dot.addEventListener("click", () => {
+				currentSlide(index + 1);
+			});
+		});
+
+		// Auto-advance slides every 8 seconds
+		let slideInterval = setInterval(() => {
+			changeSlide(1);
+		}, 8000);
+
+		// Pause auto-advance when hovering over the slideshow
+		const container = document.querySelector(".slideshow-container");
+
+		container.addEventListener("mouseenter", () => {
+			clearInterval(slideInterval);
+		});
+
+		container.addEventListener("mouseleave", () => {
+			slideInterval = setInterval(() => {
+				changeSlide(1);
+			}, 8000);
+		});
+
+		// Initialize the slideshow
+		showSlide(slideIndex);
+	});
+</script>
+</body>
+</html>
